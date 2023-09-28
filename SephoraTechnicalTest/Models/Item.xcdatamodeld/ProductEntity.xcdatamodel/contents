@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F82" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BrandEntity" representedClassName="BrandEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="cbrand" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProductEntity" inverseName="brandRelation" inverseEntity="ProductEntity"/>
+    </entity>
+    <entity name="ImageURLsEntity" representedClassName="ImageURLsEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="large" optional="YES" attributeType="String"/>
+        <attribute name="small" optional="YES" attributeType="String"/>
+        <relationship name="productRelation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProductEntity" inverseName="imageURLsRelation" inverseEntity="ProductEntity"/>
+    </entity>
+    <entity name="ProductEntity" representedClassName="ProductEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="isProductSet" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isSpecialBrand" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="productDescription" optional="YES" attributeType="String"/>
+        <attribute name="productId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="productName" optional="YES" attributeType="String"/>
+        <relationship name="brandRelation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BrandEntity" inverseName="cbrand" inverseEntity="BrandEntity"/>
+        <relationship name="imageURLsRelation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageURLsEntity" inverseName="productRelation" inverseEntity="ImageURLsEntity"/>
+    </entity>
+</model>
