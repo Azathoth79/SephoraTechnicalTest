@@ -14,9 +14,13 @@ final class PLPViewModelTests: XCTestCase {
     var serviceRequesterMock: ServiceRequesterMock!
     var dataProvider: ProductsDataProvider!
     var viewModel: PLPViewModel!
-    
+    var coreDataManager: CoreDataManager!
+
     override func setUp() {
         super.setUp()
+        // Delete all records before each test
+        coreDataManager = CoreDataManager.shared
+        coreDataManager.deleteAllProducts()
         serviceRequesterMock = ServiceRequesterMock()
     }
     
@@ -55,10 +59,11 @@ final class PLPViewModelTests: XCTestCase {
     
     func testFetchProductsFailure() {
         let expectedResponse =  NSError(domain: "", code: 400)
+        serviceRequesterMock.successResponse = nil
         serviceRequesterMock.failureResponse = expectedResponse
         dataProvider = ProductsDataProvider(serviceRequester: serviceRequesterMock)
         viewModel = PLPViewModel(productsDataProvider: dataProvider)
-        let expect = expectation(description: "Products not fetched but restored from CoreData")
+        let expect = expectation(description: "Should not have any products")
         
         viewModel.onReloadData = {
             expect.fulfill()
@@ -67,6 +72,6 @@ final class PLPViewModelTests: XCTestCase {
         viewModel.fetchProducts()
         
         waitForExpectations(timeout: 5.0, handler: nil)
-        XCTAssertEqual(viewModel.numberOfCells(), 3)
+        XCTAssertEqual(viewModel.numberOfCells(), 0)
     }
 }

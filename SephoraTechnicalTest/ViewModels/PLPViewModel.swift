@@ -44,6 +44,7 @@ final class PLPViewModel {
             }).disposed(by: disposeBag)
     }
     
+    // Sorting products by special brand
     private func sortItemsBySpecialBrand(items: [Product]) -> [Product] {
         items.sorted(by: { $0.isSpecialBrand && !$1.isSpecialBrand })
     }

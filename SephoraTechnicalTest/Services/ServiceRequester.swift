@@ -29,6 +29,7 @@ final class ServiceRequester: ServiceRequesterType {
             }
             
             var request = URLRequest(url: url)
+            // Avoid having standard request cache policy
             request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
     
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in

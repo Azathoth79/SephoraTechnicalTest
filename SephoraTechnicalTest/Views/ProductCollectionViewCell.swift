@@ -42,17 +42,17 @@ final class ProductCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupTitleLabel() {
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: Theme.FontSize.title)
         titleLabel.numberOfLines = 2
     }
     
     private func setupDescriptionLabel() {
-        descriptionLabel.font = UIFont.systemFont(ofSize: 14)
+        descriptionLabel.font = UIFont.systemFont(ofSize: Theme.FontSize.description)
         descriptionLabel.numberOfLines = 0
     }
     
     private func setupPriceLabel() {
-        priceLabel.font = UIFont.systemFont(ofSize: 16)
+        priceLabel.font = UIFont.systemFont(ofSize: Theme.FontSize.price)
         priceLabel.textColor = .green
     }
     

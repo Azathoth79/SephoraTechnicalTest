@@ -31,7 +31,7 @@ final class PLPViewController: UIViewController {
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: (view.frame.width - 16 * 2 - 10) / 2, height: 300)
+        layout.itemSize = CGSize(width: (view.frame.width - Theme.collectionViewMargins * 2 - 10) / 2, height: Theme.collectionViewItemSize)
 
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
@@ -44,8 +44,8 @@ final class PLPViewController: UIViewController {
         view.addSubview(collectionView)
         
         NSLayoutConstraint.activate([
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Theme.collectionViewMargins),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Theme.collectionViewMargins),
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
